@@ -1,0 +1,27 @@
+import org.apache.spark.SparkContext
+import org.apache.spark.SparkContext._
+import org.apache.spark.SparkConf
+import org.apache.spark.mllib.feature.HashingTF
+import org.apache.spark.mllib.linalg.Vector
+import org.apache.spark.mllib.clustering.{PowerIterationClustering, PowerIterationClusteringModel}
+import org.apache.spark.mllib.linalg.Vectors
+import breeze.linalg._
+import breeze.plot._
+
+
+object pic {
+  def main(args: Array[String]) {
+    val conf = new SparkConf().setAppName("PIC")
+    val sc = new SparkContext(conf)
+
+val f = Figure()
+val p = f.subplot(0)
+val x = linspace(0.0,1.0)
+p += plot(x, x :^ 2.0)
+p += plot(x, x :^ 3.0, '.')
+p.xlabel = "x axis"
+p.ylabel = "y axis"
+f.saveas("lines.png") // save current figure as a .png, eps and pdf also supported
+
+}
+}
